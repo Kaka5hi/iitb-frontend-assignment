@@ -1,0 +1,31 @@
+nav {
+    margin: 0px auto 20px auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav > span {
+    text-transform: capitalize;
+    font-size: 25px;
+    font-weight: 700;
+}
+
+nav > button {
+    width: max-content;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: 500;
+    text-transform: capitalize;
+    border-radius: 4px;
+    border: 1px solid black;
+    background-color: white;
+    transition: 400ms ease;
+}
+
+nav > button:hover {
+    cursor: pointer;
+    background-color: black;
+    color: white;
+    transition: 400ms ease;
+}
