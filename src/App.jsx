@@ -79,13 +79,13 @@ const App = () => {
             return;
         }
 
-        // copy all listdata
+        // copy all bucket
         const tempList = [...listData];
-        // navigate through the listData for the card and create its copy before deleting it
+        // navigate through the bucket for the card and create its copy before deleting it
         const tempCard = tempList[sourceColumnIndex].cards[sourceCardIndex];
-        // copy created, than using splice function to delete the card
+        // copy created than using slpice function to delete the card
         tempList[sourceColumnIndex].cards.splice(sourceCardIndex, 1);
-        // using target column index and card index we can insert the copy at that posiiton
+        // using target bucket index and card index we can insert the copy at that posiiton
         tempList[targetColumnIndex].cards.splice(targetCardIndex, 0, tempCard);
         setListData(tempList);
     };
