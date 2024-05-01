@@ -100,19 +100,18 @@
     border-radius: 5px;
     border: 1px solid transparent;
     text-transform: capitalize;
-    background-color: white;
 }
 
 .button-container button:hover {
     cursor: pointer;
 }
 
-.button-container button:first-child:hover {
+.button-container button:first-child {
     background-color: tomato;
     color: white;
 }
 
-.button-container button:last-child:hover {
+.button-container button:last-child {
     background-color: #0a0;
     color: white;
 }

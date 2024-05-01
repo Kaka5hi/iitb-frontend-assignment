@@ -6,17 +6,17 @@
     border-radius: 4px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 20px;
     cursor: pointer;
 }
 
 .card h2 {
-    height: 30px;
-    font-size: 22px;
+    font-size: 24px;
     font-weight: 500;
 }
 
-.card h2::first-letter {
+.card h2::first-letter,
+.card p::first-letter {
     text-transform: capitalize;
 }
 
@@ -28,11 +28,7 @@
 }
 
 .card > .top svg {
-    width: 30px;
-    height: 30px;
-    border-radius: 50px;
-    border: 1px solid black;
-    padding: 4px;
+    font-size: 20px;
     transition: 400ms ease;
     margin-left: 10px;
     display: none;
@@ -40,9 +36,7 @@
 }
 
 .card > .top svg:hover {
-    background-color: tomato;
-    color: white;
-    border: 1px solid tomato;
+    color: tomato;
     transition: 400ms ease;
 }
 

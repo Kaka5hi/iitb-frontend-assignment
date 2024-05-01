@@ -20,6 +20,9 @@ const CardModal = ({ setShowModal, handleNewCardCreation }) => {
 
     // function for on change event for each input fields
     const handleInputChange = (e) => {
+        setTitleError(false);
+        setDescriptionError(false);
+        setColumnError(false);
         setData((prev) => {
             return { ...prev, [e.target.name]: e.target.value };
         });
@@ -139,7 +142,24 @@ const CardModal = ({ setShowModal, handleNewCardCreation }) => {
                 </div>
                 <div className="button-container">
                     <button onClick={() => setShowModal(false)}>cancel</button>
-                    <button onClick={handleCardSubmission}>add card</button>
+                    <button
+                        onClick={handleCardSubmission}
+                        disabled={
+                            titleError || descriptionError || columnError
+                                ? true
+                                : false
+                        }
+                        style={
+                            titleError || descriptionError || columnError
+                                ? {
+                                      backgroundColor: "lightgray",
+                                      cursor: "not-allowed",
+                                  }
+                                : {}
+                        }
+                    >
+                        add card
+                    </button>
                 </div>
             </div>
         </div>

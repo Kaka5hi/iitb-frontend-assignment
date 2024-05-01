@@ -1,6 +1,6 @@
 .list {
     flex: 1;
-    max-width: 450px;
+    max-width: 375px;
     min-height: fit-content;
     padding: 20px;
     padding-bottom: 40px;
@@ -27,8 +27,7 @@
 }
 
 .card-container::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.3);
     background-color: #000000;
 }
 
@@ -38,7 +37,8 @@
 }
 
 .card-container::-webkit-scrollbar-thumb {
-    /* border-radius: 10px; */
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.3);
     background-color: #ffffff;
+    cursor: auto;
+    border-radius: 10px;
 }

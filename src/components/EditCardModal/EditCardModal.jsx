@@ -8,7 +8,15 @@ const EditCardModal = ({
     setListData,
     listData,
 }) => {
+    // track column change
     const [colName, setColName] = useState("");
+
+    const [titleError, setTitleError] = useState(false);
+    const [descError, setDescError] = useState(false);
+
+    function onlyLettersAndSpaces(str) {
+        return /^[A-Za-z\s]*$/.test(str);
+    }
 
     const handleUpdate = (e) => {
         e.preventDefault();
@@ -20,6 +28,22 @@ const EditCardModal = ({
             newColumn: colName,
             cardId: editData.cardId,
         };
+
+        // validate before submitting
+        if (updatedCardValues.title === "") {
+            return setTitleError(true);
+        }
+
+        if (!onlyLettersAndSpaces(updatedCardValues.title)) {
+            return setTitleError(true);
+        }
+
+        if (
+            updatedCardValues.description === "" ||
+            updatedCardValues.description.length < 25
+        ) {
+            return setDescError(true);
+        }
 
         // case 1, where user just updated the title and description and not the column value
         if (updatedCardValues.newColumn === "") {
@@ -133,12 +157,19 @@ const EditCardModal = ({
                         name="title"
                         autoComplete="off"
                         defaultValue={editData.title}
-                        onChange={(e) =>
+                        onChange={(e) => {
+                            setTitleError(false);
                             setEditData((prev) => {
                                 return { ...prev, title: e.target.value };
-                            })
-                        }
+                            });
+                        }}
                     />
+                    {titleError && (
+                        <p className="error">
+                            Error: Title cannot be empty and should only contain
+                            alphabets.
+                        </p>
+                    )}
                 </div>
                 <div className="input-container">
                     <label htmlFor="description">description:</label>
@@ -151,12 +182,19 @@ const EditCardModal = ({
                         placeholder="enter description"
                         autoComplete="off"
                         defaultValue={editData.description}
-                        onChange={(e) =>
+                        onChange={(e) => {
+                            setDescError(false);
                             setEditData((prev) => {
                                 return { ...prev, description: e.target.value };
-                            })
-                        }
+                            });
+                        }}
                     />
+                    {descError && (
+                        <p className="error">
+                            Error: Make sure description is more than 25
+                            letters.
+                        </p>
+                    )}
                 </div>
                 <div className="input-container">
                     <label htmlFor="column">select column:</label>
@@ -183,7 +221,20 @@ const EditCardModal = ({
                     <button onClick={() => setShowEditModal(false)}>
                         cancel
                     </button>
-                    <button onClick={handleUpdate}>update card</button>
+                    <button
+                        onClick={handleUpdate}
+                        disabled={titleError || descError ? true : false}
+                        style={
+                            titleError || descError
+                                ? {
+                                      backgroundColor: "lightgray",
+                                      cursor: "not-allowed",
+                                  }
+                                : {}
+                        }
+                    >
+                        update card
+                    </button>
                 </div>
             </div>
         </div>

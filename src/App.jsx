@@ -1,41 +1,53 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AddNewCard from "./components/AddNewCard/AddNewCard";
 import List from "./components/List/List";
 import CardModal from "./components/CardModal/CardModal";
 import EditCardModal from "./components/EditCardModal/EditCardModal";
+
 const App = () => {
+    // for add card modal
     const [showModal, setShowModal] = useState(false);
+
+    // for edit card modal
     const [showEditModal, setShowEditModal] = useState(false);
-    const [listData, setListData] = useState([
-        {
-            type: "pending",
-            key: 1,
-            cards: [
-                {
-                    title: "testing",
-                    description: "sme random 25 letter counted description",
-                    cardId: 225,
-                },
-                {
-                    title: "testing new",
-                    description: "sme random 25 letter counted description",
-                    cardId: 226,
-                },
-                {
-                    title: "again",
-                    description: "sme random 25 letter counted description",
-                    cardId: 227,
-                },
-            ],
-        },
-        { type: "working", key: 2, cards: [] },
-        { type: "completed", key: 3, cards: [] },
-    ]);
-    // drag functionality
+
+    // main list data
+    const [listData, setListData] = useState(
+        JSON.parse(localStorage.getItem("list")) || [
+            {
+                type: "pending",
+                key: 1,
+                cards: [
+                    {
+                        title: "add drag and drop",
+                        description:
+                            "drag and drop functionality is required in the design so make sure to implement it.",
+                        cardId: 225,
+                    },
+                    {
+                        title: "add error handlers",
+                        description:
+                            "make sure to add error handlers and validators so that input field are not empty when user submit new card or make changes to existing ones.",
+                        cardId: 226,
+                    },
+                    {
+                        title: "github update",
+                        description: "update the repo once a day.",
+                        cardId: 227,
+                    },
+                ],
+            },
+            { type: "working", key: 2, cards: [] },
+            { type: "completed", key: 3, cards: [] },
+        ]
+    );
+
+    // drag functionality state, basically tracking which card is picked and from which column
     const [targetCard, setTargetCard] = useState({
         cardId: "",
         columnName: "",
     });
+
     const handleDragEnd = (cardId, columnName) => {
         let sourceColumnIndex,
             sourceCardIndex,
@@ -70,26 +82,27 @@ const App = () => {
             return;
         }
 
-        
         // copy all listdata
         const tempList = [...listData];
-        
+
         // navigate through the listData for the card and create its copy before deleting it
         const tempCard = tempList[sourceColumnIndex].cards[sourceCardIndex];
-        
+
         // copy created, than using splice function to delete the card
         tempList[sourceColumnIndex].cards.splice(sourceCardIndex, 1);
-        
+
         // using target column index and card index we can insert the copy at that posiiton
         tempList[targetColumnIndex].cards.splice(targetCardIndex, 0, tempCard);
         setListData(tempList);
     };
+
     const handleDragEnter = (cardId, columnName) => {
         setTargetCard({
             cardId,
             columnName,
         });
     };
+
     // function used to create new card
     const handleNewCardCreation = (data, listType) => {
         const newList = listData.map((item) => {
@@ -104,6 +117,7 @@ const App = () => {
         });
         setListData(newList);
     };
+
     // function used to deleted card from column
     const deleteCard = (cardId, columnName) => {
         const allCardsFromColum = listData.filter(
@@ -121,16 +135,24 @@ const App = () => {
         });
         setListData(newList);
     };
+
+    // using this state for editing card data
     const [editData, setEditData] = useState({
         title: "",
         description: "",
         cardId: null,
         columnName: "",
     });
+
     // function to edit card
     const editCard = (cardDetails) => {
         setEditData(cardDetails);
     };
+
+    useEffect(() => {
+        localStorage.setItem("list", JSON.stringify(listData));
+    }, [listData]);
+
     return (
         <>
             <AddNewCard setShowModal={setShowModal} />
