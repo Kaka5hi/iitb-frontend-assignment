@@ -4,7 +4,7 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: crimson;
+    background-color: black;
     color: white;
     border-radius: 5px;
 }
@@ -43,15 +43,15 @@ nav {
     width: 35px;
     height: 35px;
     padding: none;
-    color: crimson;
-    opacity: 0.6;
+    color: rgb(164, 164, 164);
 }
 
 nav svg {
     width: 40px;
     height: 40px;
-    background-color: white;
-    color: black;
+    color: white;
+    transition: background-color 400ms ease;
+    border: 1px solid white;
     padding: 4px;
     border-radius: 4px;
 }
@@ -67,17 +67,18 @@ nav svg {
     font-weight: 500;
     text-transform: capitalize;
     border-radius: 5px;
-    border: 1px solid transparent;
     background-color: white;
-    transition: 400ms ease;
+    color: black;
+    border: 1px solid white;
+    transition: background-color 400ms ease;
 }
 
 .right-section > button:hover,
 .right-section > svg:hover {
     cursor: pointer;
-    background-color: black;
-    color: white;
-    transition: 400ms ease;
+    border: 1px solid transparent;
+    background-color: white;
+    color: black;
 }
 
 .search-bar > svg:hover {

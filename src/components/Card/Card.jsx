@@ -1,19 +1,13 @@
-import { MdDeleteOutline, MdOutlineEdit } from "react-icons/md";
 import "./Card.css";
 
 const Card = ({
     card,
     setShowEditModal,
     columnName,
-    deleteCard,
     editCard,
     handleDragEnter,
     handleDragEnd,
 }) => {
-    const handleDeleteCard = (cardId, colName) => {
-        deleteCard(cardId, colName);
-    };
-
     const handleEditCard = (cardDetails, colName) => {
         editCard({ ...cardDetails, colName });
         setShowEditModal(true);
@@ -30,13 +24,6 @@ const Card = ({
             >
                 <div className="top">
                     <h2>{card.title}</h2>
-                    <div className="icon-container">
-                        <MdDeleteOutline
-                            onClick={() =>
-                                handleDeleteCard(card.cardId, columnName)
-                            }
-                        />
-                    </div>
                 </div>
                 <p>{card.description}</p>
             </div>

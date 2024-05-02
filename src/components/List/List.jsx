@@ -5,26 +5,18 @@ const List = ({
     item,
     setShowEditModal,
     showEditModal,
-    deleteCard,
     editCard,
     handleDragEnter,
     handleDragEnd,
 }) => {
     return (
-        <div
-            className="list"
-            style={
-                item.cards.length === 0
-                    ? { height: "72px", borderRadius: "5px" }
-                    : {}
-            }
-        >
+        <div className="list">
             <h1>{item.type}</h1>
             <div
                 className="card-container"
                 style={
                     item.cards.length === 0
-                        ? { height: "0px", overflow: "hidden" }
+                        ? { height: "0px", overflow: "hidden", display: "none" }
                         : {}
                 }
             >
@@ -36,7 +28,6 @@ const List = ({
                             setShowEditModal={setShowEditModal}
                             showEditModal={showEditModal}
                             columnName={item.type}
-                            deleteCard={deleteCard}
                             editCard={editCard}
                             handleDragEnd={handleDragEnd}
                             handleDragEnter={handleDragEnter}

@@ -11,11 +11,12 @@ body {
     min-height: 100vh;
     padding: 10px 10px 0;
     position: relative;
+    background-color: #ececec;
 }
 
 .main-container {
     display: flex;
     height: 85vh;
     overflow: hidden;
-    gap: 10px;
+    gap: 20px;
 }

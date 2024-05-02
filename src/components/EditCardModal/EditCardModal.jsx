@@ -7,6 +7,7 @@ const EditCardModal = ({
     setEditData,
     setListData,
     listData,
+    deleteCard,
 }) => {
     // track column change
     const [colName, setColName] = useState("");
@@ -218,6 +219,13 @@ const EditCardModal = ({
                     </select>
                 </div>
                 <div className="button-container">
+                    <button
+                        onClick={() =>
+                            deleteCard(editData.cardId, editData.colName)
+                        }
+                    >
+                        delete
+                    </button>
                     <button onClick={() => setShowEditModal(false)}>
                         cancel
                     </button>
@@ -233,7 +241,7 @@ const EditCardModal = ({
                                 : {}
                         }
                     >
-                        update card
+                        update
                     </button>
                 </div>
             </div>

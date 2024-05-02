@@ -134,6 +134,7 @@ const App = () => {
             }
         });
         setListData(newList);
+        setShowEditModal(false);
     };
 
     // using this state for editing card data
@@ -186,6 +187,7 @@ const App = () => {
                     setEditData={setEditData}
                     listData={listData}
                     setListData={setListData}
+                    deleteCard={deleteCard}
                 />
             )}
         </>
