@@ -14,29 +14,7 @@ const App = () => {
     // main list data
     const [listData, setListData] = useState(
         JSON.parse(localStorage.getItem("list")) || [
-            {
-                type: "pending",
-                key: 1,
-                cards: [
-                    {
-                        title: "add drag and drop",
-                        description:
-                            "drag and drop functionality is required in the design so make sure to implement it.",
-                        cardId: 225,
-                    },
-                    {
-                        title: "add error handlers",
-                        description:
-                            "make sure to add error handlers and validators so that input field are not empty when user submit new card or make changes to existing ones.",
-                        cardId: 226,
-                    },
-                    {
-                        title: "github update",
-                        description: "update the repo once a day.",
-                        cardId: 227,
-                    },
-                ],
-            },
+            { type: "pending", key: 1, cards: [] },
             { type: "working", key: 2, cards: [] },
             { type: "completed", key: 3, cards: [] },
         ]
