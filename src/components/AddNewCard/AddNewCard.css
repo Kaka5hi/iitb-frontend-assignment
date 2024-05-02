@@ -9,13 +9,58 @@ nav {
     border-radius: 5px;
 }
 
-nav > span {
+.right-section,
+.left-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.left-section > span {
     text-transform: capitalize;
     font-size: 25px;
     font-weight: 700;
 }
 
-nav > button {
+.search-bar {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.search-bar > input {
+    font-size: 16px;
+    padding: 10px;
+    width: 300px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+}
+
+.search-bar > svg {
+    position: absolute;
+    right: 0;
+    width: 35px;
+    height: 35px;
+    padding: none;
+    color: crimson;
+    opacity: 0.6;
+}
+
+nav svg {
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    color: black;
+    padding: 4px;
+    border-radius: 4px;
+}
+
+/* nav svg:hover {
+    cursor: pointer;
+} */
+
+.right-section > button {
     width: max-content;
     padding: 10px 20px;
     font-size: 18px;
@@ -27,9 +72,14 @@ nav > button {
     transition: 400ms ease;
 }
 
-nav > button:hover {
+.right-section > button:hover,
+.right-section > svg:hover {
     cursor: pointer;
     background-color: black;
     color: white;
     transition: 400ms ease;
+}
+
+.search-bar > svg:hover {
+    cursor: default;
 }

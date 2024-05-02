@@ -9,7 +9,7 @@
 body {
     width: 100%;
     min-height: 100vh;
-    padding: 20px 20px 0 20px;
+    padding: 10px 10px 0;
     position: relative;
 }
 
@@ -17,5 +17,5 @@ body {
     display: flex;
     height: 85vh;
     overflow: hidden;
-    gap: 20px;
+    gap: 10px;
 }
